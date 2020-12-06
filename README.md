@@ -28,9 +28,17 @@ pobi : --
 crong : ----
 honux : ---
 ```
-- 우승자 안내 문구
+- 단독 우승자 안내 문구
 ```
-pobi, honux가 최종 우승했습니다.
+최종 우승자: pobi
+```
+- 공동 우승자 안내 문구
+```
+최종 우승자: pobi, jun
+```
+- 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 [ERROR] 로 시작해야 한다.
+```
+[ERROR] 시도 횟수는 숫자여야 한다.
 ```
 
 ### 💻 프로그래밍 실행 결과 예시
@@ -39,26 +47,30 @@ pobi, honux가 최종 우승했습니다.
 pobi,crong,honux
 시도할 회수는 몇회인가요?
 5
+
 실행 결과
 pobi : -
 crong : -
 honux : -
+
 pobi : --
 crong : -
 honux : --
+
 pobi : ---
 crong : --
 honux : ---
+
 pobi : ----
 crong : ---
 honux : ----
+
 pobi : -----
 crong : ----
 honux : -----
+
 pobi, honux가 최종 우승했습니다.
 ```
-
-<br>
 
 ## 🎱 프로그래밍 요구사항
 - Swift 코드 컨벤션을 지키면서 프로그래밍한다.
@@ -84,7 +96,7 @@ pobi, honux가 최종 우승했습니다.
 - 가능하면 setPosition(int position) 메소드를 추가하지 않고 구현한다.
 
 ```swift
-struct Car {
+class Car {
     private var name : String
     private var position: Int = 0
     
@@ -102,12 +114,18 @@ struct Car {
         - 랜덥 숫자 3 이하일 경우 멈춤
     - 움직임의 실행 결과를 출력하는 함수
 
-2. Game
-    - 게임 진행
+2. GameController
+    - 게임 시작 함수
+        - input을 받음
+        - 게임을 실행
+        - 승자를 출력
+
+3. Game
+    - 게임 진행 함수
         - 시도 횟수 만큼 반복
             - 각각의 Car 객체들은 전진/멈춤을 진행
 
-3. Result
+3. Winner
     - 승자를 도출하는 함수 
         - Car 객체들의 position을 보고 승자를 결정
     - 승자를 출력하는 함수
